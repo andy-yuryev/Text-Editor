@@ -1,5 +1,5 @@
 # Text Editor
-A simple text editor written in java using swing library.
+A simple text editor written in Java using Swing library.
 
 My implementation of Hyperskill project - https://hyperskill.org/projects/38?goal=7.
 
