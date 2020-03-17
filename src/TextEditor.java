@@ -33,6 +33,7 @@ public class TextEditor extends JFrame {
     private boolean textChanged;
     private static final String TITLE = "Notepad";
     private Map<Integer, Integer> searchResults = new LinkedHashMap<>();
+    private Integer[] searchResultsKeys;
 
     public TextEditor() {
 
@@ -276,6 +277,7 @@ public class TextEditor extends JFrame {
                         }
                     }
                 }
+                searchResultsKeys = searchResults.keySet().toArray(new Integer[0]);
                 return !searchResults.isEmpty();
             }
 
@@ -288,7 +290,7 @@ public class TextEditor extends JFrame {
                     e.printStackTrace();
                 }
                 if (found) {
-                    int start = (int) searchResults.keySet().toArray()[index];
+                    int start = index;
                     int end = searchResults.get(start);
                     textArea.setCaretPosition(start + (end - start));
                     textArea.select(start, start + (end - start));
@@ -301,18 +303,16 @@ public class TextEditor extends JFrame {
     }
 
     private void prevMatch() {
-        Object[] results = searchResults.keySet().toArray();
-        if (results.length != 0) {
-            int start = (int) (index > 0 ? results[--index] : results[index = searchResults.size() - 1]);
+        if (searchResultsKeys.length != 0) {
+            int start = index > 0 ? searchResultsKeys[--index] : searchResultsKeys[index = searchResults.size() - 1];
             int end = searchResults.get(start);
             grabFocus(start, end);
         }
     }
 
     private void nextMatch() {
-        Object[] results = searchResults.keySet().toArray();
-        if (results.length != 0) {
-            int start = (int) (index < searchResults.size() - 1 ? results[++index] : results[index = 0]);
+        if (searchResultsKeys.length != 0) {
+            int start = index < searchResults.size() - 1 ? searchResultsKeys[++index] : searchResultsKeys[index = 0];
             int end = searchResults.get(start);
             grabFocus(start, end);
         }
