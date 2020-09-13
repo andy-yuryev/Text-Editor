@@ -36,7 +36,6 @@ public class TextEditor extends JFrame {
     private Integer[] searchResultsKeys;
 
     public TextEditor() {
-
         setTitle(TITLE);
         setSize(750, 500);
         setLocationRelativeTo(null);
@@ -115,7 +114,6 @@ public class TextEditor extends JFrame {
     }
 
     private void setMenu() {
-
         JMenuBar menuBar = new JMenuBar();
 
         JMenu fileMenu = new JMenu("File");
@@ -185,7 +183,6 @@ public class TextEditor extends JFrame {
     }
 
     private void setButtons() {
-
         Dimension buttonSize = new Dimension(32, 32);
 
         openButton = new JButton(new ImageIcon("icons/openIcon.png"));
@@ -205,7 +202,6 @@ public class TextEditor extends JFrame {
     }
 
     private void setListeners() {
-
         openButton.addActionListener(event -> open());
 
         saveButton.addActionListener(event -> {
